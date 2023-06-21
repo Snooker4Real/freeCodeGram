@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img height="60" src="" class="rounded-circle" alt="" >
+            <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-100" alt="" >
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
@@ -18,9 +18,9 @@
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             @endcan
                 <div class="d-flex">
-                <div class="p-3"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="p-3"><strong>141k</strong> followers</div>
-                <div class="p-3"><strong>402</strong> following</div>
+                <div class="pe-3"><strong>{{ $user->posts->count() }}</strong> posts</div>
+                <div class="pe-3"><strong>141k</strong> followers</div>
+                <div class="pe-3"><strong>402</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
