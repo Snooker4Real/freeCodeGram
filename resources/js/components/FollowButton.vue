@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn btn-primary m-auto mx-4" @click="followUser">Follow</button>
+        <button class="btn btn-primary m-auto mx-4" @click="followUser" v-text="buttonText"></button>
     </div>
 </template>
 
@@ -24,11 +24,24 @@
                     // user_id: this.user_id
                 // })
                 .then(response => {
+                    this.status = !this.status;
                     console.log(response.data);
                 })
-                .catch(error => {
-                    console.log(error);
+                .catch(errors => {
+                    if (errors.response.status == 401) {
+                        window.location = '/login';
+                    }
                 });
+            }
+        },
+
+        computed: {
+            buttonText() {
+                if (this.status) {
+                    return 'Unfollow';
+                } else {
+                    return 'Follow';
+                }
             }
         }
     }
